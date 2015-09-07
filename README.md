@@ -8,13 +8,13 @@ Referencia: artículo publicado por [Charlie Gleason](http://charliegleason.com/
 $ npm init
 ```
 
-###Agregas las dependencias: **gulp** y **gulp-gh-pages**
+###Agregamos las dependencias: **gulp** y **gulp-gh-pages**
 ```sh
 npm install gulp --save-dev
 npm install gulp-gh-pages --save-dev
 ```
 
-###Agregar en ```gulpfile.js``` el siguiente código:  
+###Agregamos la tarea **deploy** en ```gulpfile.js```:  
 ```sh
 var gulp        = require('gulp');
 var deploy      = require('gulp-gh-pages');
@@ -32,7 +32,7 @@ gulp.task('deploy', function () {
 node_modules
 dist
 ```
-###Subir cambios a GitHub y crear branch gh-pages
+###Subimos los cambios a GitHub y creamos branch ```gh-pages```  
 ```sh
 git checkout --orphan gh-pages
 git rm -rf .
@@ -42,8 +42,7 @@ git commit -m "Init gh-pages"
 git push --set-upstream origin gh-pages
 git checkout master
 ```
-Listo! con estos cambios, sólo nos falta ejecutar en la terminal:  
-```gulp deploy```  
+Con estos cambios, sólo nos falta ejecutar en la terminal ```gulp deploy``` para que se suban los cambios al branch ```gh-pages``` y esta se pueda desplegar  
 
 ###Por último, configurar la url en GitHub:
 ```sh
