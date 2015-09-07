@@ -27,7 +27,7 @@ gulp.task('deploy', function () {
     .pipe(deploy())
 });
 ```
-###```.gitignore```
+###Configuramos ```.gitignore```
 ```sh
 node_modules
 dist
@@ -42,8 +42,29 @@ git commit -m "Init gh-pages"
 git push --set-upstream origin gh-pages
 git checkout master
 ```
-Con estos cambios, sólo nos falta ejecutar en la terminal ```gulp deploy``` para que se suban los cambios al branch ```gh-pages``` y esta se pueda desplegar  
+###Actualizamos los cambios en la rama ```gh-pages```  
+```$ gulp deploy```  
+###Automatizamos los cambios a **```master```** y a **```gh-pages```**  
+```
+$ cd .git/hooks
+```
 
+Creamos archivo **post-commit**
+```
+$ touch post-commit
+```
+
+Agregamos las siguientes líneas en el archivo **post-commit**:  
+```
+#!/bin/sh
+gulp deploy
+git push origin master
+```
+
+Otorgamos privilegios
+```
+$ chmod +x post-commit
+``` 
 ###Por último, configurar la url en GitHub:
 ```sh
 username-github.io/repositorio
